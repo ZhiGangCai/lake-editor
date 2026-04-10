@@ -1,0 +1,76 @@
+<script>
+  window.KITCHEN_URL = window.extensionResourceURI + '/editor/lake-editor-icon.js';
+  console.info('KITCHEN_URL', window.KITCHEN_URL);
+</script>
+<style>
+  html, body {
+    background-color: var(--vscode-editor-background);
+    margin: 0;
+    padding: 0;
+  }
+
+  .scroll-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    box-shadow: var(--vscode-scrollbar-shadow) 0 6px 6px -6px inset;
+  }
+
+  .ne-doc-major-editor .ne-layout-mode-adapt .ne-ui:after {
+    background: transparent !important;
+    box-shadow: var(--vscode-scrollbar-shadow) 0 6px 6px -6px inset;
+  }
+
+  .ne-ui-table-row-controller, .ne-ui-table-control-point-wrapper, ne-table-box,
+  .ne-editor, .ne-layout-mode-fixed .ne-editor-wrap-box, .ne-layout-mode-adapt .ne-editor-wrap-box {
+    background-color: transparent !important;
+  }
+  #root {
+    height: 100vh;
+  }
+
+  .ne-ant-calendar {
+    width: min-content;
+  }
+  .ant-popover-arrow {
+    display: none;
+  }
+  .lake-title {
+    margin-top: 20px;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 32px;
+    vertical-align: bottom;
+    transition: all .3s, height 0s;
+    border: none;
+    outline: none !important;
+    box-shadow: none;
+    padding: 0;
+    resize: none;
+    background-color: transparent;
+    color: var(--lakex-editor-text-color);
+    font-weight: 700;
+    font-size: 36px;
+    border-radius: 0;
+    line-height: 1.389;
+    font-feature-settings: none;
+    font-variant-ligatures: none;
+    height: 50px;
+    resize: none;
+  }
+
+  /* Excalidraw 卡片样式 */
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+<div role="presentation" aria-hidden="true" class="scroll-decoration" style="width: 100%"></div>
+<div id="root" class="ne-doc-major-editor"></div>
