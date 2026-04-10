@@ -2,7 +2,7 @@
   "name": "lake-editor",
   "displayName": "lake-editor - 语雀编辑器",
   "description": "在 VSCode 中使用语雀 Lake 编辑器本地化编辑语雀 .lake 文件和 .md Markdown 文件",
-  "version": "0.0.19",
+  "version": "0.0.1",
   "publisher": "chenjingqing",
   "icon": "icon.png",
   "keywords": ["yuque", "lake", "语雀", "markdown", "editor", "lakebook", "notetaking"],
