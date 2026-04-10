@@ -1,9 +1,9 @@
 {
-  "name": "lake-editor",
-  "displayName": "lake-editor - 语雀编辑器",
+  "name": "yuque-editor",
+  "displayName": "Yuque Editor - 语雀编辑器",
   "description": "在 VSCode 中使用语雀 Lake 编辑器本地化编辑语雀 .lake 文件和 .md Markdown 文件",
   "version": "0.0.1",
-  "publisher": "chenjingqing",
+  "publisher": "caizhigang",
   "icon": "icon.png",
   "keywords": ["yuque", "lake", "语雀", "markdown", "editor", "lakebook", "notetaking"],
   "engines": {
@@ -24,7 +24,7 @@
     "test-watch": "tsc -watch -p ./",
     "pretest": "npm run test-compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "vsce": "vsce package --baseImagesUrl https://raw.githubusercontent.com/ilimei/vscode-plugin-lake-editor/main",
+    "vsce": "vsce package --baseImagesUrl https://raw.githubusercontent.com/ZhiGangCai/lake-editor/main",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
@@ -202,5 +202,5 @@
       }
     }
   },
-  "repository": "git@github.com:ilimei/vscode-plugin-lake-editor.git"
+  "repository": "git@github.com:ZhiGangCai/lake-editor.git"
 }
