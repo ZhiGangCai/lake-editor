@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 这是一个名为 "lake-editor" 的 VSCode 扩展，用于在本地编辑语雀（Yuque）lake 格式文件。它使用 VSCode 的 Custom Editor API 将语雀编辑器（@alipay_lakex-doc）嵌入为 webview。扩展还提供了树形视图用于浏览 .lakebook 文件。
 
+基于原项目 [ilimei/vscode-plugin-lake-editor](https://github.com/ilimei/vscode-plugin-lake-editor) 重构改进。
+
 ## 开发命令
 
 ```bash
@@ -64,7 +66,8 @@ src/
 
 [FileChangeDetector](src/editor/services/file-change-detector.ts) 独立服务实现文件外部变更检测：
 
-- 创建文件系统监听器监听当前文件
+- 创建文件系统监听器监听当前文件（监听 `onDidChange` / `onDidCreate` / `onDidDelete` 三种事件）
+- 兼容各种编辑器的保存策略（写入临时文件→删除→重命名）
 - 收到变更事件后使用防抖处理，只处理最后一次变更
 - 通过 `markSaved()` 机制过滤扩展自身保存触发的变更，避免死循环
 - 弹出提示询问用户是否重新加载
@@ -83,13 +86,17 @@ src/
 
 [LakebookTreeProvider](src/tree-provider/lakebook-tree-provider.ts) 实现 `TreeDataProvider`，用于浏览 .lakebook 压缩包，支持右键菜单操作（Explore、Unzip、Open Source）。
 
+性能优化：
+- Tar 条目缓存，打开文档不用重新遍历整个 tar 包
+- LRU 缓存淘汰，最多缓存 10 个 lakebook，内存占用可控
+
 ### 资源管理
 
 [Dispose](src/common/dispose.ts) 模块提供 `Disposable` 基类，用于管理 VSCode 资源和防止内存泄漏。
 
 ### 配置管理
 
-[config/index.ts](src/config/index.ts) 提供统一类型安全的配置访问，支持配置变更监听。
+[config/index.ts](src/config/index.ts) 提供统一类型安全的配置访问，支持配置变更监听。任何配置变更会立即通知编辑器，无需重启生效。
 
 ## Webpack 构建
 
@@ -105,6 +112,7 @@ src/
 - `lakeEditor.showTitle` - 在 lake 文件中显示可编辑的标题
 - `lakeEditor.showToc` - 显示目录
 - `lakeEditor.showToolbar` - 显示编辑器工具栏
+- `lakeEditor.paragraphSpacing` - 增加段间距
 - `lakeEditor.defaultFontSize` - 默认字号（12-48px）
 - `lakeEditor.formatLake` - 保存时格式化 XML
 - `lakeEditor.uploadImageToGithub` - 上传图片到 GitHub 仓库

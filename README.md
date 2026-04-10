@@ -1,8 +1,8 @@
 # lake-editor
 
-[![Version](https://img.shields.io/badge/version-0.0.18-blue.svg)](https://marketplace.visualstudio.com/items?itemName=chenjingqing.lake-editor)
-
 在 VSCode 中使用**语雀 Lake 编辑器**本地化编辑语雀 `.lake` 文件和 `.md` Markdown 文件。
+
+基于 [ilimei/vscode-plugin-lake-editor](https://github.com/ilimei/vscode-plugin-lake-editor) 重构改进。
 
 ## ✨ 功能特性
 
@@ -13,19 +13,25 @@
 - 🌓 **深色模式** - 自动跟随 VSCode 主题切换亮色/深色模式
 - ⚡ **外部变更检测** - 文件在其他编辑器修改后自动提示重新加载
 - 📤 **图片上传** - 支持上传图片到 GitHub 仓库
+- ✍️ **编辑 Markdown** - 使用 Lake 强大编辑器编辑你的 Markdown 文件
+
+## 改进内容
+
+本项目基于原项目进行了完整重构和 bug 修复：
+
+- 🏗️ **完整方法级重构** - 所有核心模块添加完整 JSDoc 注释，改进代码结构
+- 🐛 **修复多个已知 bug** - Markdown title 丢失、空文件问题、第一次外部修改不提示等
+- ⚡ **四项性能优化** - Tar 条目缓存、LRU 缓存淘汰、树形节点内存优化、配置即时生效
+- 📦 **干净仓库** - 清理历史，保持代码整洁
 
 ## 📥 安装
 
-### 从 VSCode 插件市场安装
-
-在 VSCode 插件市场搜索 `lake-editor` 点击安装。
-
 ### 手动安装
 
-从 [GitHub Releases](https://github.com/ilimei/vscode-plugin-lake-editor/releases) 下载 `.vsix` 文件，然后在 VSCode 中：
+从 [GitHub Releases](https://github.com/ZhiGangCai/lake-editor/releases) 下载 `.vsix` 文件，然后在 VSCode 中：
 
 ```bash
-code --install-extension lake-editor-0.0.18.vsix
+code --install-extension lake-editor-0.0.1.vsix
 ```
 
 ## 🚀 使用方法
@@ -82,10 +88,6 @@ code --install-extension lake-editor-0.0.18.vsix
 
 如果你需要 AI 代码补全，建议在原生文本编辑器中编写代码，然后复制粘贴到 lake-editor。
 
-## 📸 截图
-
-待补充
-
 ## 🏗️ 开发
 
 ### 环境要求
@@ -128,5 +130,5 @@ MIT License - 查看 [LICENSE](LICENSE)
 ## 🔗 相关链接
 
 - [语雀编辑器开发文档](https://www.yuque.com/yuque/developer/gfoax065u2v72isu)
-- [GitHub 仓库](https://github.com/ilimei/vscode-plugin-lake-editor)
-- [VSCode 插件市场](https://marketplace.visualstudio.com/items?itemName=ilimei.lake-editor)
+- [原项目](https://github.com/ilimei/vscode-plugin-lake-editor)
+- [GitHub 仓库](https://github.com/ZhiGangCai/lake-editor)
